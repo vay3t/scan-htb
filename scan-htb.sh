@@ -19,6 +19,7 @@ else
 				echo "[+] Discovering ports..."
 				masscan $target -p1-65535,U:1-65535 -oG out.grep --rate=1000 -e tun0 
 
+				echo ""
 				grep open out.grep | grep tcp > tmptcp.grep
 				if [ $? -eq 0 ]; then
 					portsTCP=$(cat tmptcp.grep | awk '{print $5}' | cut -d "/" -f1 | tr "\n" ",")
