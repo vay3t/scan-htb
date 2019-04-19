@@ -7,3 +7,7 @@ Need root
 ```
 [*] Usage: bash scan-htb.sh <target>
 ```
+
+# Credits
+
+* dplastico
