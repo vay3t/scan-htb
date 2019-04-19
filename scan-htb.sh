@@ -31,10 +31,12 @@ else
 
 				if [ $portsTCP != "Null" ]; then
 					echo "[+] Scan TCP ports"
-					nmap $target -p $portsTCP -v -n -T4 -sC -sV -Pn
+					echo "nmap $target -p $portsTCP -n -T4 -sC -sV -Pn"
+					nmap $target -p $portsTCP -n -T4 -sC -sV -Pn
 				fi
 				if [ $portsUDP != "Null" ]; then
 					echo "[+] Scan UDP ports"
+					echo "nmap $target -sU -p $portsUDP -n -T4 -sC -sV -Pn"
 					nmap $target -sU -p $portsUDP -n -T4 -sC -sV -Pn
 				fi
 				echo "[*] Finished"
