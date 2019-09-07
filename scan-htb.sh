@@ -22,12 +22,12 @@ else
 				echo ""
 				grep open out.grep | grep tcp > tmptcp.grep
 				if [ $? -eq 0 ]; then
-					portsTCP=$(cat tmptcp.grep | awk '{print $5}' | cut -d "/" -f1 | tr "\n" ",")
+					portsTCP=$(cat tmptcp.grep | awk '{print $7}' | cut -d "/" -f1 | tr "\n" ",")
 				fi
 
 				grep open out.grep | grep udp > tmpudp.grep
 				if [ $? -eq 0 ]; then
-					portsUDP=$(cat tmpudp.grep | awk '{print $5}' | cut -d "/" -f1 | tr "\n" ",")
+					portsUDP=$(cat tmpudp.grep | awk '{print $7}' | cut -d "/" -f1 | tr "\n" ",")
 				fi
 
 				if [ $portsTCP != "Null" ]; then
