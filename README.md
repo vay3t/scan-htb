@@ -8,7 +8,9 @@ Need root
 [*] Usage: bash scan-htb.sh <target>
 ```
 
-# Install masscan
+# Correct install
+
+### Install masscan
 ```bash
 sudo apt update
 sudo apt install git gcc make libpcap-dev -y
@@ -18,14 +20,14 @@ make
 sudo make install
 ```
 
-# Install nmap
-```
+### Install nmap
+```bash
 sudo apt update
 sudo apt install nmap -y
 ```
 
-# Install scan-htb
-```
+### Install scan-htb
+```bash
 git clone https://github.com/vay3t/scan-htb
 ```
 
