@@ -16,7 +16,7 @@ sudo apt update
 sudo apt install git gcc make libpcap-dev -y
 git clone https://github.com/robertdavidgraham/masscan
 cd masscan
-make
+make -j
 sudo make install
 ```
 
