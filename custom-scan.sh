@@ -48,7 +48,7 @@ else
 				exit 2
 			fi
 		else
-			echo "[-] You are not connected to hackthebox"
+			echo "[-] You are not connected to $iface"
 		fi
 	fi
 fi
