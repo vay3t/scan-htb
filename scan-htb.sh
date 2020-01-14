@@ -5,7 +5,7 @@ target=$1
 portsTCP="Null"
 portsUDP="Null"
 
-categories=$(grep -r categories /usr/share/nmap/scripts/*.nse | grep -oP '".*?"' | sort -u  | cut -d '"' -f2 | tr "\n" ",")
+categories=$(grep -r categories /usr/share/nmap/scripts/*.nse | grep -oP '".*?"' | sort -u  | cut -d '"' -f2)
 
 if [[ $(id -u) -ne 0 ]]; then
 	echo "[!] Please run as root"
