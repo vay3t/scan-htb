@@ -6,6 +6,8 @@ target=$2
 portsTCP="Null"
 portsUDP="Null"
 
+categories=$(grep -r categories /usr/share/nmap/scripts/*.nse | grep -oP '".*?"' | sort -u  | cut -d '"' -f2)
+
 if [[ $(id -u) -ne 0 ]]; then
 	echo "[!] Please run as root"
 	exit 2
@@ -34,13 +36,13 @@ else
 
 				if [ $portsTCP != "Null" ]; then
 					echo "[+] Scan TCP ports"
-					echo "nmap $target -p $portsTCP -n -T4 -sV -Pn -sC"
-					nmap $target -p $portsTCP -n -T4 -sV -Pn -sC
+					echo "nmap $target -p $portsTCP -n -T4 -sV -Pn --script=$categories"
+					nmap $target -p $portsTCP -n -T4 -sV -Pn --script=$categories
 				fi
 				if [ $portsUDP != "Null" ]; then
 					echo "[+] Scan UDP ports"
-					echo "nmap $target -sU -p $portsUDP -n -T4 -sV -Pn -sC"
-					nmap $target -sU -p $portsUDP -n -T4 -sV -Pn -sC
+					echo "nmap $target -sU -p $portsUDP -n -T4 -sV -Pn --script=$categories"
+					nmap $target -sU -p $portsUDP -n -T4 -sV -Pn --script=$categories
 				fi
 				echo "[*] Finished"
 			else
