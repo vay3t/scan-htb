@@ -24,23 +24,23 @@ else
 				echo ""
 				grep open out.grep | grep tcp > tmptcp.grep
 				if [ $? -eq 0 ]; then
-					portsTCP=$(cat tmptcp.grep | awk '{print $7}' | cut -d "/" -f1 | tr "\n" ",")
+					portsTCP=$(awk '{print $7}' tmptcp.grep | cut -d "/" -f1 | tr "\n" ",")
 				fi
 
 				grep open out.grep | grep udp > tmpudp.grep
 				if [ $? -eq 0 ]; then
-					portsUDP=$(cat tmpudp.grep | awk '{print $7}' | cut -d "/" -f1 | tr "\n" ",")
+					portsUDP=$(awk '{print $7}' tmpudp.grep | cut -d "/" -f1 | tr "\n" ",")
 				fi
 
 				if [ $portsTCP != "Null" ]; then
 					echo "[+] Scan TCP ports"
-					echo "nmap $target -p $portsTCP -n -T4 -sC -sV -Pn"
-					nmap $target -p $portsTCP -n -T4 -sC -sV -Pn
+					echo "nmap $target -p $portsTCP -n -T4 -sV -Pn -sC"
+					nmap $target -p $portsTCP -n -T4 -sV -Pn -sC
 				fi
 				if [ $portsUDP != "Null" ]; then
 					echo "[+] Scan UDP ports"
-					echo "nmap $target -sU -p $portsUDP -n -T4 -sC -sV -Pn"
-					nmap $target -sU -p $portsUDP -n -T4 -sC -sV -Pn
+					echo "nmap $target -sU -p $portsUDP -n -T4 -sV -Pn -sC"
+					nmap $target -sU -p $portsUDP -n -T4 -sV -Pn -sC
 				fi
 				echo "[*] Finished"
 			else
